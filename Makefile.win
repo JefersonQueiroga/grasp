@@ -1,0 +1,42 @@
+# Project: grasp
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = main.o Leitura.o Construcao.o Listas.o Tool.o $(RES)
+LINKOBJ  = main.o Leitura.o Construcao.o Listas.o Tool.o $(RES)
+LIBS =  -L"lib"  -g3 
+INCS =  -I"include" 
+CXXINCS =  -I"lib/gcc/mingw32/3.4.2/include"  -I"include/c++/3.4.2/backward"  -I"include/c++/3.4.2/mingw32"  -I"include/c++/3.4.2"  -I"include" 
+BIN  = LeituraTSP.exe
+CXXFLAGS = $(CXXINCS)   -g3
+CFLAGS = $(INCS)   -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before LeituraTSP.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "LeituraTSP.exe" $(LIBS)
+
+main.o: main.cpp
+	$(CC) -c main.cpp -o main.o $(CFLAGS)
+
+Leitura.o: Leitura.cpp
+	$(CC) -c Leitura.cpp -o Leitura.o $(CFLAGS)
+
+Construcao.o: Construcao.cpp
+	$(CC) -c Construcao.cpp -o Construcao.o $(CFLAGS)
+
+Listas.o: Listas.cpp
+	$(CC) -c Listas.cpp -o Listas.o $(CFLAGS)
+
+Tool.o: Tool.cpp
+	$(CC) -c Tool.cpp -o Tool.o $(CFLAGS)
